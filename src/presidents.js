@@ -419,31 +419,70 @@ const presidents = [
 
 
 // Iteration 1 | Names of All Presidents - `map()`
-function getNames(presidentsArr) {}
-
-
+function getNames(presidents) {
+  return presidents.map((president) => president.name);
+}
+console.log(getNames(presidents))
 
 
 // Iteration 2 | Democratic Presidents - `filter()`
-function getDemocraticPresidents(presidentsArr) {}
+function getDemocraticPresidents(presidents) {
+  return presidents.filter((currentElement) => {
+
+    if (currentElement.party === 'Democratic') {
+      return true;
+    }
+    return false;
+  })/*.map(currentElement => currentElement.name) Chaining the methods */
+}
+console.log(getDemocraticPresidents(presidents))
 
 
 
 
 // Iteration 3 | Count Years in Office - reduce()
-function  countYearsInOffice(presidentsArr) {}
+function countYearsInOffice(presidents) {
+
+  return presidents.reduce((acc, currentPresident) => {
+    if (currentPresident.leftOffice === null ) {
+      return acc 
+    }
+
+  return acc + (currentPresident.leftOffice - currentPresident.tookOffice)
+  }, 0);
+}
+console.log(countYearsInOffice(presidents))
 
 
 
 
 // Iteration 4 | Sort Presidents by Birth Year - `sort()`
-function sortPresidentsByBirthYear(presidentsArr) {}
+function sortPresidentsByBirthYear(presidents) {
 
+  return presidents.sort((president1, president2) => {
+
+    if (president1.birthYear > president2.birthYear) {
+      return 1;
+    } else if (president1.birthYear < president2.birthYear) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
+console.log(sortPresidentsByBirthYear(presidents))
 
 
 
 // Bonus: Iteration 5 | Age at Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) {}
+function getAgeAtInauguration(presidents) {
+  return presidents.map((president) => {
+    return {
+      name: president.name,
+      ageAtInauguration: president.tookOffice - president.birthYear
+    };
+  });
+}
 
 
 
@@ -455,7 +494,9 @@ function getPresidentsBornAfter(presidentsArr, year) {}
 
 
 // Bonus: Iteration 7 | Count Republican Presidents
-function countRepublicanPresidents(presidentsArr) {}
+function countRepublicanPresidents(presidents) {
+
+}
 
 
 
